@@ -1,0 +1,31 @@
+
+version: 2.1
+
+jobs:
+  build-test-publish:
+    docker:
+      - image: cimg/openjdk:21.0
+
+    steps:
+      - checkout
+
+      - run:
+          name: Build and Test
+          command: ./mvnw -B clean verify
+
+      - setup_remote_docker
+
+      - run:
+          name: Build and Publish Docker Image
+          command: |
+            docker build -t "$DOCKERHUB_USERNAME/taskflow-api:latest" .
+            echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+            docker push "$DOCKERHUB_USERNAME/taskflow-api:latest"
+
+workflows:
+  taskflow-ci:
+    jobs:
+      - build-test-publish:
+          filters:
+            branches:
+              only: main
