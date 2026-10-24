@@ -30,3 +30,17 @@ https://module3-taskflow-api.onrender.com/api/tasks
 
 ### Railway Outage
 ![Railway Error](screenshots/railway-error.png)
+
+
+## Optional 1: CI Pipeline
+Status: Completed
+
+Implemented CircleCI to automatically build, test and publish the TaskFlow Docker image to Docker Hub.
+
+### Successful CircleCI Pipeline
+[View Successful Pipeline](https://app.circleci.com/pipelines/gh/dhts1990/taskflow-api/1/details?useNewPipelines=true&workflowId=1a71533b-a3b3-4b30-9eea-b62afc66257c&job=764b1fbe-e623-4f09-bd4d-eb1a95de3f04&buildNumber=6&jobType=build)
+
+### Docker Hub
+[View Docker Image](https://hub.docker.com/r/dhts1990/taskflow-api)
+
+Image: dhts1990/taskflow-api:latest
